@@ -16,16 +16,13 @@ const geistMono = localFont({
 
 export default function Home() {
   function takeScreenshot() {
-    const screenshot = document.documentElement.cloneNode(true) as any;
+    const screenshot = document.documentElement.cloneNode(true) as HTMLElement;
     screenshot.style.pointerEvents = 'none';
     screenshot.style.overflow = 'hidden';
-    screenshot.style.webkitUserSelect = 'none';
-    screenshot.style.mozUserSelect = 'none';
-    screenshot.style.msUserSelect = 'none';
-    screenshot.style.oUserSelect = 'none';
     screenshot.style.userSelect = 'none';
-    screenshot.dataset.scrollX = window.scrollX;
-    screenshot.dataset.scrollY = window.scrollY;
+    screenshot.style.userSelect = 'none';
+    screenshot.style.userSelect = 'none';
+    screenshot.style.userSelect = 'none';
     const blob = new Blob([screenshot.outerHTML], {
       type: 'text/html'
     });
@@ -50,7 +47,7 @@ export default function Home() {
     handleGeneratePDF(`${window.location.origin}${data.filePath}`)
   }
 
-  const handleGeneratePDF = async (blobUrl: any) => {
+  const handleGeneratePDF = async (blobUrl: string) => {
     const response = await fetch('/api/generate-pdf', {
       method: 'POST',
       body: blobUrl,

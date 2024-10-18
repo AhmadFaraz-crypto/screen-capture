@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
-import formidable, { IncomingForm } from "formidable";
+import { IncomingForm } from "formidable";
 
 // Configure Formidable to handle file uploads
 export const config = {

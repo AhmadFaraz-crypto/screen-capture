@@ -6,7 +6,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
         if (req.method === 'POST') {
-            const url = req.body; // Assume the blob URL is sent in the request body
+            const url = req.body;
 
             // Launch Puppeteer
             const browser = await puppeteer.launch({
@@ -14,7 +14,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             });
             const page = await browser.newPage();
 
-            // Set the content of the page to the data URL
             await page.goto(url, { waitUntil: 'networkidle0' });
 
             const pdfBuffer = await page.pdf({

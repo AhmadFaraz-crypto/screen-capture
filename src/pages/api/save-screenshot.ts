@@ -3,10 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import { IncomingForm } from "formidable";
 
-// Configure Formidable to handle file uploads
 export const config = {
     api: {
-        bodyParser: false, // Disable Next.js built-in body parsing to handle files manually
+        bodyParser: false,
     },
 };
 
@@ -14,7 +13,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'POST') {
         const form = new IncomingForm();
         
-        // Parse the incoming form to extract the file
         form.parse(req, (err, fields, files) => {
             if (err) {
                 console.error('Error parsing form:', err);

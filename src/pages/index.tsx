@@ -31,14 +31,11 @@ export default function Home() {
 
   async function generate() {
     window.URL = window.URL || window.webkitURL;
-    // Create a screenshot Blob
     const screenshotBlob = takeScreenshot();
 
-    // Prepare FormData to send the Blob to the server
     const formData = new FormData();
-    formData.append('file', screenshotBlob, 'screenshot.html'); // Append Blob with a filename
+    formData.append('file', screenshotBlob, 'screenshot.html');
 
-    // Send the Blob to the API route
     const response = await fetch('/api/save-screenshot', {
         method: 'POST',
         body: formData,
